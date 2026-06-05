@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+:root {
+  --bg: #1b1b1b;
+  --chrome: #2a2a2a;
+  --chrome-dark: #202020;
+  --panel: #252525;
+  --panel-raised: #303030;
+  --panel-soft: #383838;
+  --stage: #161616;
+  --field: #1d1d1d;
+  --text-primary: #f0f0f0;
+  --text-muted: #b8b8b8;
+  --text-subtle: #8a8a8a;
+  --accent: #4aa3ff;
+  --accent-strong: #2d8cff;
+  --accent-soft: rgba(74, 163, 255, 0.22);
+  --success: #63c98b;
+  --warning: #e0b85a;
+  --danger: #ff7373;
+  --border: #3d3d3d;
+  --border-strong: #555;
+  --shadow: 0 18px 44px rgba(0, 0, 0, 0.42);
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.35;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1c1c1c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border: 2px solid #1c1c1c;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #686868;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}
+
+code {
+  font-family: "IBM Plex Mono", Consolas, monospace;
+}

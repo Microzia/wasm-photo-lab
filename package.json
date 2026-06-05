@@ -1,0 +1,26 @@
+{
+  "name": "wasm-photoshop-mvp",
+  "private": true,
+  "version": "0.1.0",
+  "description": "MVP Photoshop-подобного редактора изображений на Rust, WebAssembly и React",
+  "workspaces": [
+    "web",
+    "shared-types"
+  ],
+  "scripts": {
+    "install:all": "npm install --workspaces",
+    "dev": "npm --workspace web run dev",
+    "build:wasm": "wasm-pack build wasm-engine --target web --out-dir ../web/src/wasm/pkg",
+    "build:web": "npm --workspace web run build",
+    "build:web:file": "npm --workspace web run build:file",
+    "build": "npm run build:wasm && npm run build:web",
+    "start:static": "powershell -ExecutionPolicy Bypass -File scripts/open-static.ps1",
+    "docker:build": "powershell -ExecutionPolicy Bypass -File scripts/docker-build.ps1",
+    "docker:run": "powershell -ExecutionPolicy Bypass -File scripts/docker-run.ps1",
+    "test:web": "npm --workspace web run test",
+    "test:wasm": "cargo test --manifest-path wasm-engine/Cargo.toml",
+    "test": "npm run test:wasm && npm run test:web",
+    "e2e": "npm --workspace web run e2e",
+    "check:toolchain": "rustup target add wasm32-unknown-unknown && cargo install wasm-bindgen-cli --version 0.2.105 && cargo install wasm-pack --version 0.13.1"
+  }
+}

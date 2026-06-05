@@ -1,0 +1,9 @@
+node_modules
+web/node_modules
+web/dist
+web/test-results
+wasm-engine/target
+web-dev.log
+web-dev.err.log
+.git
+.gitignore
