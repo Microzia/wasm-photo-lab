@@ -2,8 +2,12 @@ node_modules
 web/node_modules
 web/dist
 web/test-results
+web/src/wasm/pkg
 wasm-engine/target
 web-dev.log
 web-dev.err.log
 .git
 .gitignore
+*.pptx
+gradient_backgrounds
+tekst_prezentatsii_WASM_Photo_Lab.txt

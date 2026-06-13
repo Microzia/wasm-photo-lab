@@ -1,0 +1,12 @@
+name: wasm-photo-lab
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: wasm-photo-lab:latest
+    container_name: wasm-photo-lab-site
+    restart: unless-stopped
+    ports:
+      - "8080:80"

@@ -1,4 +1,4 @@
-FROM node:24-bookworm AS builder
+FROM node:22-bookworm AS builder
 
 WORKDIR /app
 
@@ -14,12 +14,13 @@ RUN rustup target add wasm32-unknown-unknown \
 COPY package.json package-lock.json ./
 COPY shared-types/package.json shared-types/package.json
 COPY web/package.json web/package.json
-RUN npm ci --workspaces
+RUN npm ci --include=dev --workspaces
 
 COPY shared-types ./shared-types
 COPY wasm-engine ./wasm-engine
 COPY web ./web
-RUN npm run build
+RUN npm run build \
+  && test -f web/dist/index.html
 
 FROM nginx:1.27-alpine AS runtime
 
@@ -27,5 +28,8 @@ COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/web/dist /usr/share/nginx/html
 
 EXPOSE 80
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+  CMD wget -qO- http://127.0.0.1/ > /dev/null || exit 1
 
 CMD ["nginx", "-g", "daemon off;"]
